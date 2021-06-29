@@ -42,7 +42,7 @@
 
 #define MELODY_NOTE_MAX_NB (3)
 
-#if USING_ESP32 0
+#define USING_ESP32 0
 
 class Buzzer {
   public:
