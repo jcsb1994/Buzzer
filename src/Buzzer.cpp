@@ -13,7 +13,12 @@ void Buzzer::_ring(uint16_t note) {
 #if USING_ESP32
     ledcWriteTone(_channel, note);
 #else
-    tone(_pin, sound);
+ if(!note) {
+     noTone(_pin);
+ } else {
+    tone(_pin, note);   
+ }
+    
 #endif
 }
 
