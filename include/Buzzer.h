@@ -42,6 +42,7 @@
 
 #define MELODY_NOTE_MAX_NB (3)
 
+#if USING_ESP32 0
 
 class Buzzer {
   public:
@@ -54,9 +55,9 @@ class Buzzer {
 
     Buzzer(uint8_t pin, uint8_t channel, uint16_t stepPeriod)
         : _pin(pin), _stepPeriod(stepPeriod), _channel(channel) {
-          ledcSetup(_channel, 2000, 8); // setup beeper at 2000, maybe lower?
-          ledcAttachPin(_pin, _channel); // attach beeper, not sure if those 2 lines should be called all the time?
+          _init();
         }
+
     ~Buzzer() {}
 
 /***************************************************************************/

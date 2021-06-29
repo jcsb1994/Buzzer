@@ -1,14 +1,30 @@
 #include "Buzzer.h"
 #include <Arduino.h>
 
-void Buzzer::_reset() { 
-        _state = S_BUZZER_IDLE;
-        _Melody = NULL;
-        _currNote = 0;
-        ledcWriteTone(_channel, 0); 
+
+void Buzzer::_init() {
+#if USING_ESP32
+    ledcSetup(_channel, 2000, 8); // setup beeper at 2000, maybe lower?
+    ledcAttachPin(_pin, _channel); 
+#endif
 }
 
-void Buzzer::setMelody(Melody_t *mel) {
+void Buzzer::_ring(uint16_t note) {
+#if USING_ESP32
+    ledcWriteTone(_channel, note);
+#else
+    tone(_pin, sound);
+#endif
+}
+
+void Buzzer::_reset() { 
+    _state = S_BUZZER_IDLE;
+    _Melody = NULL;
+    _currNote = 0;
+    _ring(0); 
+}
+
+void Buzzer::setMelody(Buzzer::Melody_t *mel) {
     _reset();
     _Melody = mel;
 }
@@ -26,12 +42,11 @@ bool Buzzer::isMuted() {
 }
 
 void Buzzer::pause() {    
-    ledcWriteTone(_channel, 0); 
+    _ring(0);
     _state = S_BUZZER_PAUSED;
 }
 
 void Buzzer::resume() {    
-    ledcWriteTone(_channel, 0); 
     _state = S_BUZZER_PLAYING;
 }
 
@@ -53,7 +68,7 @@ void Buzzer::step() {
             
         } else { 
             uint16_t sound = _Melody->frequency[_currNote];
-            ledcWriteTone(_channel, sound);                                                                                                                                                     
+            _ring(sound);                                                                                                                                              
             // tone(_pin, sound);
             _state = S_BUZZER_PLAYING;
         }
@@ -61,7 +76,7 @@ void Buzzer::step() {
     case S_BUZZER_PLAYING:
     if ((++_stepCount * _stepPeriod) >= _Melody->duration[_currNote]) {
             // noTone(_pin);
-            ledcWriteTone(_channel, 0); 
+            _ring(0); 
             _stepCount = 0;
             _state = S_BUZZER_ACTIVE;
             _currNote++;
