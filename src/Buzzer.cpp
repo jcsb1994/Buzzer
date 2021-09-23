@@ -1,20 +1,20 @@
 #include "Buzzer.h"
-#include <Arduino.h>
+
 
 
 void Buzzer::_init() {
-#if USING_ESP32
+#if USING_ESP32 == 1
     ledcSetup(_channel, 2000, 8); // setup beeper at 2000, maybe lower?
     ledcAttachPin(_pin, _channel); 
 #endif
 }
 
 void Buzzer::_ring(uint16_t note) {
-#if USING_ESP32
+#if USING_ESP32 == 1
     ledcWriteTone(_channel, note);
 #else
  if(!note) {
-     noTone(_pin);
+     noTone();
  } else {
     tone(_pin, note);   
  }
@@ -28,6 +28,14 @@ void Buzzer::_reset() {
     _currNote = 0;
     _ring(0); 
 }
+
+    void Buzzer::init(uint8_t pin, uint8_t channel, uint16_t stepPeriod)
+        {
+         _pin = pin;
+         _stepPeriod=stepPeriod;
+         _channel = channel;
+          _init();
+        }
 
 void Buzzer::setMelody(Buzzer::Melody_t *mel) {
     _reset();

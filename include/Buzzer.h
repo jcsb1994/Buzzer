@@ -29,6 +29,7 @@
 #ifndef BUZZER_H
 #define BUZZER_H
 
+#include <stdint.h>
 #include <Arduino.h>
 
 #define D4_NOTE_FREQ (293)
@@ -42,7 +43,7 @@
 
 #define MELODY_NOTE_MAX_NB (3)
 
-#define USING_ESP32 0
+#define USING_ESP32 (1)
 
 class Buzzer {
   public:
@@ -53,6 +54,8 @@ class Buzzer {
         uint16_t frequency[MELODY_NOTE_MAX_NB];
     } Melody_t;
 
+    Buzzer() {}
+
     Buzzer(uint8_t pin, uint8_t channel, uint16_t stepPeriod)
         : _pin(pin), _stepPeriod(stepPeriod), _channel(channel) {
           _init();
@@ -62,11 +65,21 @@ class Buzzer {
 
 /***************************************************************************/
   /*!
+    @brief  Initialization to use with the empty constructor
+    @param  ctor ctor arguments
+  */
+/***************************************************************************/
+    void init(uint8_t pin, uint8_t channel, uint16_t stepPeriod);
+
+/***************************************************************************/
+  /*!
     @brief  Sets a melody to start playing. will play as step() is called
     @param  mel melody_t struct containing the notes to be played
   */
 /***************************************************************************/
     void setMelody(Melody_t *mel);
+
+    bool hasMelody() { if (_Melody != NULL) return true; else return false; }
 
 /***************************************************************************/
   /*!
@@ -102,9 +115,10 @@ class Buzzer {
 
   private:
     typedef enum { S_BUZZER_IDLE, S_BUZZER_ACTIVE, S_BUZZER_PLAYING, S_BUZZER_PAUSED } BuzzerState_t;
-    const uint8_t _pin;
-    const uint16_t _stepPeriod;
-    const uint8_t _channel; // 0 TO 15
+    uint8_t _pin;
+    uint16_t _stepPeriod;
+    uint8_t _channel; // 0 TO 15
+    
     Melody_t *_Melody;
 
     bool _muted = false;
