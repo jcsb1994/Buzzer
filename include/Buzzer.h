@@ -29,7 +29,6 @@
 #ifndef BUZZER_H
 #define BUZZER_H
 
-#include <stdint.h>
 #include <Arduino.h>
 
 #define D4_NOTE_FREQ (293)
@@ -43,7 +42,7 @@
 
 #define MELODY_NOTE_MAX_NB (3)
 
-#define USING_ESP32 (1)
+#define USING_ESP32 (0)
 
 class Buzzer {
   public:
@@ -72,7 +71,7 @@ class Buzzer {
     void init(uint8_t pin, uint8_t channel, uint16_t stepPeriod);
 
 /***************************************************************************/
-  /*!
+  /*! 
     @brief  Sets a melody to start playing. will play as step() is called
     @param  mel melody_t struct containing the notes to be played
   */

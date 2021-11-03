@@ -1,5 +1,5 @@
 #include "Buzzer.h"
-
+#include <Arduino.h>
 
 
 void Buzzer::_init() {
@@ -14,7 +14,7 @@ void Buzzer::_ring(uint16_t note) {
     ledcWriteTone(_channel, note);
 #else
  if(!note) {
-     noTone();
+    noTone(_pin);
  } else {
     tone(_pin, note);   
  }
