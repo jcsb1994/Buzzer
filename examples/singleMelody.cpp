@@ -1,8 +1,8 @@
-
+/* This example was tested to work on the Arduino Uno and ESP32 boards */
 #include <Arduino.h>
 #include "Buzzer.h"
 
-#define BUZZER_PIN 7
+#define BUZZER_PIN 12
 
 Buzzer::Melody_t myMelody{.nbNotes = 3,
                               .duration = {400, 400, 800},
