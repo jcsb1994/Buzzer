@@ -4,7 +4,7 @@
 
 #define BUZZER_PIN 7
 
-Buzzer::Melody_t bootupMelody{.nbNotes = 3,
+Buzzer::Melody_t myMelody{.nbNotes = 3,
                               .duration = {400, 400, 800},
                               .frequency = {D4_NOTE_FREQ, E4_NOTE_FREQ, G4_NOTE_FREQ}};
 
@@ -15,7 +15,7 @@ void setup()
   Serial.begin(9600);
   Serial.println("hello, buzzer single melody example!");
   myBuzzer.init(BUZZER_PIN);
-  myBuzzer.setMelody(&bootupMelody);
+  myBuzzer.setMelody(&myMelody);
 }
 
 void loop()

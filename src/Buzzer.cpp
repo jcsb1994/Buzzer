@@ -1,4 +1,5 @@
 #include "Buzzer.h"
+#include <stdint.h>
 
 #if DEBUG_BUZZER
 #define PRINT(msg) Serial.println(msg)
@@ -12,10 +13,9 @@
 #define PRINT_VERBOSE(msg) 
 #endif
 
-void Buzzer::init(uint8_t pin, uint8_t channel, uint16_t stepPeriod)
+void Buzzer::init(uint8_t pin, uint8_t channel)
 {
     _pin = pin;
-    _stepPeriod=stepPeriod;
     _channel = channel;
     _init();
 }
@@ -89,7 +89,7 @@ bool Buzzer::_isRingDone()
     PRINT_VERBOSE("Start time: " + String(_ringTimestamp));
     if (millis() < _ringTimestamp) {   // in case of overflow
       PRINT("Millis Overflow");
-      gap = (MAX_ULONG_VALUE - _ringTimestamp) + millis() + 1;
+      gap = (UINT32_MAX - _ringTimestamp) + millis() + 1;
     } else {
       PRINT_VERBOSE("Calculating time between now and timer start: " + String(millis()) + " " + String(_ringTimestamp));
       gap = millis() - _ringTimestamp;
