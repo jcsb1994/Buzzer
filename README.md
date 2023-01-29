@@ -1,5 +1,5 @@
 # Buzzer
-Interface for buzzers based on the Arduino framework.
+Interface for piezo buzzers based on the Arduino framework.
 
 No more `delay()` while playing sounds on a buzzer!
 Create custom melodies and pass them to your Buzzer object.
