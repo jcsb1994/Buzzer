@@ -1,6 +1,6 @@
 {
   "name": "Buzzer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "High level interface for beepers and buzzers",
   "keywords": "embedded, buzzer, sound, music, Arduino",
   "repository":

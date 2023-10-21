@@ -10,6 +10,9 @@ Everything will play automatically from a single function call!
 
 This library is intended to be used with the Arduino framework. It has been tested with the **Arduino Uno** and **ESP32** boards.
 
+You can add ability to add more notes by using build_flags = -D BUZZER_MAX_NOTES=10
+in your platformio.ini file. 
+
 ### Creating a buzzer object
 The `Buzzer` class constructor takes a GPIO pin number as argument, plus a channel number from 0 to 15 if you are using the ESP32 board. There is an optional `Buzzer.init()` function if you use the empty constructor.
 
