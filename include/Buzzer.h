@@ -31,20 +31,113 @@
 
 #include <Arduino.h>
 
-#define C4_NOTE_FREQ (261)
-#define D4_NOTE_FREQ (293)
-#define E4_NOTE_FREQ (329)
+//  Generated with AI:
+
+// Octave 0
+#define A0_NOTE_FREQ (27)
+#define AS0_NOTE_FREQ (29)
+#define B0_NOTE_FREQ (31)
+
+// Octave 1
+#define C1_NOTE_FREQ (33)
+#define CS1_NOTE_FREQ (35)
+#define D1_NOTE_FREQ (37)
+#define DS1_NOTE_FREQ (39)
+#define E1_NOTE_FREQ (41)
+#define F1_NOTE_FREQ (44)
+#define FS1_NOTE_FREQ (46)
+#define G1_NOTE_FREQ (49)
+#define GS1_NOTE_FREQ (52)
+#define A1_NOTE_FREQ (55)
+#define AS1_NOTE_FREQ (58)
+#define B1_NOTE_FREQ (62)
+
+// Octave 2
+#define C2_NOTE_FREQ (65)
+#define CS2_NOTE_FREQ (69)
+#define D2_NOTE_FREQ (73)
+#define DS2_NOTE_FREQ (78)
+#define E2_NOTE_FREQ (82)
+#define F2_NOTE_FREQ (87)
+#define FS2_NOTE_FREQ (92)
+#define G2_NOTE_FREQ (98)
+#define GS2_NOTE_FREQ (104)
+#define A2_NOTE_FREQ (110)
+#define AS2_NOTE_FREQ (117)
+#define B2_NOTE_FREQ (123)
+
+// Octave 3
+#define C3_NOTE_FREQ (131)
+#define CS3_NOTE_FREQ (139)
+#define D3_NOTE_FREQ (147)
+#define DS3_NOTE_FREQ (156)
+#define E3_NOTE_FREQ (165)
+#define F3_NOTE_FREQ (175)
+#define FS3_NOTE_FREQ (185)
+#define G3_NOTE_FREQ (196)
+#define GS3_NOTE_FREQ (208)
+#define A3_NOTE_FREQ (220)
+#define AS3_NOTE_FREQ (233)
+#define B3_NOTE_FREQ (247)
+
+// Octave 4
+#define C4_NOTE_FREQ (262)
+#define CS4_NOTE_FREQ (277)
+#define D4_NOTE_FREQ (294)
+#define DS4_NOTE_FREQ (311)
+#define E4_NOTE_FREQ (330)
 #define F4_NOTE_FREQ (349)
+#define FS4_NOTE_FREQ (370)
 #define G4_NOTE_FREQ (392)
+#define GS4_NOTE_FREQ (415)
 #define A4_NOTE_FREQ (440)
+#define AS4_NOTE_FREQ (466)
 #define B4_NOTE_FREQ (494)
+
+// Octave 5
 #define C5_NOTE_FREQ (523)
+#define CS5_NOTE_FREQ (554)
+#define D5_NOTE_FREQ (587)
+#define DS5_NOTE_FREQ (622)
 #define E5_NOTE_FREQ (659)
 #define F5_NOTE_FREQ (698)
+#define FS5_NOTE_FREQ (740)
 #define G5_NOTE_FREQ (784)
+#define GS5_NOTE_FREQ (831)
 #define A5_NOTE_FREQ (880)
-#define B5_NOTE_FREQ (987)
+#define AS5_NOTE_FREQ (932)
+#define B5_NOTE_FREQ (988)
 
+// Octave 6
+#define C6_NOTE_FREQ (1047)
+#define CS6_NOTE_FREQ (1109)
+#define D6_NOTE_FREQ (1175)
+#define DS6_NOTE_FREQ (1245)
+#define E6_NOTE_FREQ (1319)
+#define F6_NOTE_FREQ (1397)
+#define FS6_NOTE_FREQ (1480)
+#define G6_NOTE_FREQ (1568)
+#define GS6_NOTE_FREQ (1661)
+#define A6_NOTE_FREQ (1760)
+#define AS6_NOTE_FREQ (1865)
+#define B6_NOTE_FREQ (1976)
+
+// Octave 7
+#define C7_NOTE_FREQ (2093)
+#define CS7_NOTE_FREQ (2217)
+#define D7_NOTE_FREQ (2349)
+#define DS7_NOTE_FREQ (2489)
+#define E7_NOTE_FREQ (2637)
+#define F7_NOTE_FREQ (2794)
+#define FS7_NOTE_FREQ (2960)
+#define G7_NOTE_FREQ (3136)
+#define GS7_NOTE_FREQ (3322)
+#define A7_NOTE_FREQ (3520)
+#define AS7_NOTE_FREQ (3729)
+#define B7_NOTE_FREQ (3951)
+
+// Octave 8
+#define C8_NOTE_FREQ (4186)
 #define MELODY_NOTE_MAX_NB (3)
 
 class Buzzer {
