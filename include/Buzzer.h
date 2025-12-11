@@ -138,7 +138,13 @@
 
 // Octave 8
 #define C8_NOTE_FREQ (4186)
+
+
+#if defined(BUZZER_MAX_NOTES)
+#define MELODY_NOTE_MAX_NB BUZZER_MAX_NOTES
+#else
 #define MELODY_NOTE_MAX_NB (8)
+#endif
 
 class Buzzer {
   public:
