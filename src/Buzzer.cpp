@@ -57,8 +57,7 @@ void Buzzer::resume()
 void Buzzer::_init()
 {
 #ifdef ESP32
-    ledcSetup(_channel, 2000, 8); // setup beeper at 2000, maybe lower?
-    ledcAttachPin(_pin, _channel); 
+    ledcAttach(_pin, 2000, 8); // setup beeper at 2000, maybe lower?
 #endif
 }
 
