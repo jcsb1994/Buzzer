@@ -57,6 +57,7 @@ void Buzzer::resume()
 void Buzzer::_init()
 {
 #ifdef ESP32
+
 #if ESP_ARDUINO_VERSION >= ESP_ARDUINO_VERSION_VAL(3, 0, 0)
     // Core 3.x:
     if (!ledcAttach(_pin, 2000, 8))
@@ -67,6 +68,8 @@ void Buzzer::_init()
     // Core 2.x:
     ledcSetup(_channel, 2000, 8);
     ledcAttachPin(_pin, _channel);
+#endif
+
 #endif
 }
 
