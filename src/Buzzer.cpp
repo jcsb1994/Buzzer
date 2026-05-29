@@ -57,7 +57,19 @@ void Buzzer::resume()
 void Buzzer::_init()
 {
 #ifdef ESP32
-    ledcAttach(_pin, 2000, 8); // setup beeper at 2000, maybe lower?
+
+#if ESP_ARDUINO_VERSION >= ESP_ARDUINO_VERSION_VAL(3, 0, 0)
+    // Core 3.x:
+    if (!ledcAttach(_pin, 2000, 8))
+    {
+        // Handle initialization failure if needed
+    }
+#else
+    // Core 2.x:
+    ledcSetup(_channel, 2000, 8);
+    ledcAttachPin(_pin, _channel);
+#endif
+
 #endif
 }
 
